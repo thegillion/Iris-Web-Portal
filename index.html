@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<style>
+body{
+  width:90%;
+  margin:0 auto;
+}
+
+table:first-child{
+  margin-right: 1%;
+}
+
+table:nth-child(2n){
+
+}
+
+table{
+  width:20%;
+  float:left;
+}
+#myProgress {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    background-color: grey;
+}
+#myBar {
+    position: absolute;
+    width: 1%;
+    height: 100%;
+    background-color: green;
+}
+#label {
+    text-align: center; /* If you want to center it */
+    line-height: 30px; /* Set the line-height to the same as the height of the progress bar container, to center it vertically */
+    color: white;
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 150%;
+    left: 50%;
+    margin-left: -100px;
+}
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+
+</style>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Iris Portal</title>
+    <!-- 
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/ticker.css">
+     endinject -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-78895705-1', 'auto');
+  ga('send', 'pageview');
+ </script>
+    <script src="powerhouse.js"></script>
+
+</head>
+<body>
+<center>
+<h1>Welcome To The Unofficial Iris Portal V0.1.2</h1>
+</center>
+<table>
+  <tr>
+    <th><center>Switches</th>
+  </tr>	
+  <tr>
+    <td><center><div id="deviceSwitch"><div></center></td>
+  </tr>	
+</table>
+<table>
+  <tr>
+    <th><center>Sensors</th>
+  </tr>	
+  <tr>
+    <td><center><div id="deviceContact"><div></center></td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th><center>KeyFobs</th>
+  </tr>	
+  <tr>
+    <td><center><div id="deviceKeyfob"><div></center></td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th><center>Cameras</th>
+  </tr>	
+  <tr>
+    <td><center><div id="deviceCamera"><div></center></td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th><center>Thermostat(s)</th>
+  </tr>	
+  <tr>
+    <td><center><div id="deviceThermostat"><div></center></td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th><center>Not Listed</th>
+  </tr>	
+  <tr>
+    <td><center><div id="deviceUnknown"><div></center></td>
+  </tr>
+</table>
+<div id="myProgress">
+  <div id="myBar">
+  <div id="label">10%</div>
+  </div>
+</div>
+<p>
+<div id="output"style="width:100%;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Iris Status Portal -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-1901214862284066"
+     data-ad-slot="6408141594"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script><br>
+<input id="add" type="button" value="List Devices." onclick="ListDevices();">
+		 For <select id="places"></select><br>
+		 <input id="add" type="button" value="Start system log." onclick="systemlog();">         
+         <input id="View Cameras" type="button" value="View Cameras" onclick="showCameras();">
+		 <input id="partytime" type="button" value="Check for updates on portal" onclick="checkUpdate();">
+		 <br>
+<a href="#" onclick="testWebSocket(); return false;">Start</a>&nbsp;&nbsp;
+<a href="#" onclick="websocket.close(); return false;">Stop</a>
+</div>
+System Log.
+<div id="log" style="height:200px;width:100%;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;"></div>	
+</body>
+</html>
