@@ -48,48 +48,24 @@
 </style>
 <script type='text/javascript' > 
 //Building global var
-  var placeIDG = "";
   var devIDlist = [];
   var HubIDG = "";
-  var ZipCodeG = "";
-  var zwaveHealRecommended = "";
-  var zwaveInProgress = "";
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-78895705-2', 'auto');
-  ga('send', 'pageview');
+  var camMac = "<?php echo $_GET['mac']; ?>";
 </script>
 <script data-require="moment.js@2.10.2" data-semver="2.10.2" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
 <link rel="icon" type="image/png" href="images/favicon.png" />
 <html>
 	<head>
-		<title>Iris Web Portal</title>
-		<meta name="description" content="Iris Web Portal for Iris By Lowe's v2.0">
-		<meta name="keywords" content="Iris By Lowe's v2.0,Iris Web Portal, Iris Web Portal">
-		<meta property="og:url"                content="http://iriswebportal.com/" />
-		<meta property="og:type"               content="webpage" />
-		<meta property="og:title"              content="Iris Web Portal" />
-		<meta property="og:description"        content="Control your V2 Iris By Lowes account from a web interface" />
-		<meta property="og:image"              content="http://iriswebportal.com/images/favicon.png" />
+		<title>Iris Web Portal | Camera Advanced Settings</title>
 		<meta charset="utf-8" />
 		<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
 		<META HTTP-EQUIV="Expires" CONTENT="-1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.simpleWeather.js"></script>
-		<script src="assets/js/connect.js?v=134"></script>
-		<script src="assets/js/findFavorites.js?v=134"></script>
-		<script src="assets/js/systemstats.js?v=135"></script>
-		<script src="assets/js/controller.js?v=134"></script>
-		<script src="assets/js/eventwatcher.js?v=134"></script>
-		<script src="assets/js/history.js?v=134"></script>
-		<script src="assets/js/camerasmin.js?v=134"></script>
-		<script src="assets/js/jquery.tablesorter.js"></script>
+		<script src="assets/js/connect.js?v=127"></script>
+		<script src="assets/js/eventwatcher.js?v=127"></script>
+		<script src="assets/js/cameraAdv.js?v=127"></script>
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
@@ -104,84 +80,96 @@
 
 							<!-- Header -->
 								<header id="header">
-									<b class="logo"><a href="/" class="logo">Iris Web Portal</a> <strong><div id="portalVer"></div><div id="fmVer"></div></strong><div id="support"></i></div></b>
+									<a href="index.html" class="logo">Iris Web Portal <strong><div id="portalVer"></div><div id="fmVer"></div></strong></a>
 									
 									<div class="select-wrapper">
-									<select id="places"onchange="remember(this.selectedIndex);"></select>
-									<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Responsive add Iris Portal -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-1901214862284066"
-     data-ad-slot="6877433657"
-     data-ad-format="auto"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+									<select id="places" onchange="remember(this.selectedIndex);"></select>
+									<div class="alignleft">
+									 <script type="text/javascript">
+										amzn_assoc_ad_type = "banner";
+									amzn_assoc_marketplace = "amazon";
+									amzn_assoc_region = "US";
+									amzn_assoc_placement = "assoc_banner_placement_default";
+									amzn_assoc_campaigns = "echo";
+									amzn_assoc_banner_type = "category";
+									amzn_assoc_isresponsive = "true";
+									amzn_assoc_banner_id = "1ZZ5TM5SVRD2GHZ0KFG2";
+									amzn_assoc_tracking_id = "new-iris-portal-20";
+									amzn_assoc_linkid = "77540400ebf91b6ceac093ab0b147659";
+									 </script>
+									 <script src="//z-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&Operation=GetScript&ID=OneJS&WS=1"></script>
+									</div>
 									</div>
 									<ul class="icons">
 										<li><div id="portalCON"><i class="fa fa-connectdevelop" style="font-size:35px;color:orange"></i> <br> Starting</div></li>
 									</ul>
 								</header>
+							
 							<!-- Section -->
 								<section>
 									<header class="major">
-										<h2>System Status <span id="alarmStatus"></span><span id="alarmProvider"></span></span><span id="4gSignal"></span></h2>
+										<h2>Camera Advanced Settings</h2>
 									</header>
-									<div id="weather"></div>
-									<center>
-										<div class="table-wrapper"id ="tbody">
-											<table class="tablesorter">
-												<thead>
-													<tr>
-														<th>Name</th>
-														<th>Problem</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>																
-														<td>Loading....</td>																	
-														<td></td>																																																	
-													</tr>
-												</tbody>
-											</table>
-										</div>
-										<div class="table-wrapper"id ="shane-tbody">
-										</div>
-									</center>
-								</section>
-							<!-- Banner -->
-							<section >
-								<header class="major">
-										<h2>Favorites</h2>
-									</header>
-
-								
+									Settings have not been tested on all modes.
+									<P>
 									
-									<div id ="favtbody"></div>
-									<div id="log"></div>
-									<div id="favDevices"></div>
-									
-								</section>
-
-								
-
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Cameras</h2>
-									</header>
-									<div class="posts" id="cameras">
-										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-											<h3>Loading....</h3>
-											<p>Loading....</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
+									<div class="6u$">
+									The IR LED mode
+										<div class="select-wrapper">
+											<select name="IRLEDMODE" id="IRLEDMODE">
+												<option value="AUTO">- default -</option>
+												<option value="AUTO">AUTO</option>
+												<option value="ON">ON</option>
+												<option value="OFF">OFF</option>
+											</select>
+										</div>
 									</div>
+									<br>
+									<div class="6u$">
+									The IR LED luminance, on a scale of 1 to 5.
+										<div class="select-wrapper">
+											<select name="LED-Luminance" id="LED-Luminance">
+												<option value="5">- default -</option>
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+											</select>
+										</div>
+									</div>
+									<br>
+									<div class="6u$">
+									The motion detection mode of operation.
+										<div class="select-wrapper">
+											<select name="MDmode" id="MDmode">
+												<option value="PIR">- default -</option>
+												<option value="OFF">OFF</option>
+												<option value="PIR">PIR</option>
+												<option value="WINDOW">CAMERA</option>
+												<option value="BOTH">BOTH</option>
+											</select>
+										</div>
+									</div>
+									<br>
+									<div class="6u$">
+									The motion detection threshold, on a scale of 0 to 255
+									<br>
+									<input type="range" min="0" max="255" value="127" id="mdThreshold" onchange="showValue('mdThreshold');"> <span id="mdThresholdValue">default</span>
+									</div>
+									<br>
+									<div class="6u$">
+									The motion detection sensitivity, on a scale of 0 to 10.
+									<br>
+									<input type="range" min="0" max="10" value="6" id="mdSensitivity" onchange="showValue('mdSensitivity');"> <span id="mdSensitivityValue">default</span>
+									</div>
+									<br>
+									<a onclick="saveSettings();" class="button">Save Settings</a>
+									<a onclick="camReboot();" class="button">Reboot Camera</a>
+									<div id="Loading"></div>
 								</section>
+
+
 						</div>
 					</div>
 
@@ -197,11 +185,9 @@
 																				<li><a href="/">Homepage</a></li>
 										<li><a href="history.html">History</a></li>
 										<li><a href="switcheslights.html">Switches & Lights</a></li>
-										<li><a href="controlpanel.html">Control Panel</a></li>
 										<li><a href="energy.html">Energy</a></li>
 										<li><a href="sensors.html">Sensors</a></li>
 										<li><a href="keyfobs.html">KeyFobs</a></li>
-										<li><a href="irrigation.html">Irrigation</a></li>
 										<li>
 											<span class="opener">Surveillance</span>
 											<ul>
@@ -214,7 +200,6 @@
 											<ul>
 												<li><a href="fancontrols.html">Fan Controls</a></li>
 												<li><a href="thermostat.html">Thermostat(s)</a></li>
-												<li><a href="temperature.html">Temperature</a></li>
 											</ul>
 										</li>
 										<li><a href="rules.html">Rules</a></li>
@@ -224,8 +209,8 @@
 											<ul>
 												<li><a href="batterylevel.html">Battery Level</a></li>
 												<li><a href="signallevel.html">Signal level</a></li>
+												<li><a href="temperature.html">Temperature</a></li>
 												<li><a href="devices.html">All Devices</a></li>
-												<li><a href="eventlog.html">Event Log</a></li>
 												<li><a href="hubinfo.html">Hub Info</a></li>
 											</ul>
 										</li>
@@ -251,7 +236,6 @@
 							
 							<!-- Footer -->
 								<footer id="footer">
-								
 									<p class="copyright">&copy; Iris Web Portal. All rights reserved.  Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
 								</footer>
 
@@ -261,10 +245,12 @@
 			</div>
 
 		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
 
 	</body>
+	
 </html>

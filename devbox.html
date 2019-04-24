@@ -4,56 +4,12 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<style>
-.tooltip {
-    position: relative;
-    display: inline-block;
-}
-.value {
-    position: relative;
-    display: inline-block;
-	padding: 10px;
-	margin: auto;
-	text-align: center;
-}
 
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 200px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    top: 150%;
-    left: 50%;
-    margin-left: -100px;
-}
-.tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent black transparent;
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-
-</style>
 <script type='text/javascript' > 
 //Building global var
-  var placeIDG = "";
   var devIDlist = [];
-  var HubIDG = "";
-  var ZipCodeG = "";
-  var zwaveHealRecommended = "";
-  var zwaveInProgress = "";
+  var hubID = "";
+  var email='';
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -61,8 +17,8 @@
 
   ga('create', 'UA-78895705-2', 'auto');
   ga('send', 'pageview');
-</script>
-<script data-require="moment.js@2.10.2" data-semver="2.10.2" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+ </script>
+
 <link rel="icon" type="image/png" href="images/favicon.png" />
 <html>
 	<head>
@@ -80,16 +36,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.simpleWeather.js"></script>
+		<script src="https://rawgit.com/nodeca/pako/master/dist/pako.js"></script>
 		<script src="assets/js/connect.js?v=134"></script>
-		<script src="assets/js/findFavorites.js?v=134"></script>
-		<script src="assets/js/systemstats.js?v=135"></script>
 		<script src="assets/js/controller.js?v=134"></script>
 		<script src="assets/js/eventwatcher.js?v=134"></script>
-		<script src="assets/js/history.js?v=134"></script>
-		<script src="assets/js/camerasmin.js?v=134"></script>
-		<script src="assets/js/jquery.tablesorter.js"></script>
+		<script src="assets/js/devbox.js?v=134"></script>
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
@@ -108,80 +59,53 @@
 									
 									<div class="select-wrapper">
 									<select id="places"onchange="remember(this.selectedIndex);"></select>
-									<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Responsive add Iris Portal -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-1901214862284066"
-     data-ad-slot="6877433657"
-     data-ad-format="auto"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+
 									</div>
 									<ul class="icons">
 										<li><div id="portalCON"><i class="fa fa-connectdevelop" style="font-size:35px;color:orange"></i> <br> Starting</div></li>
 									</ul>
 								</header>
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>System Status <span id="alarmStatus"></span><span id="alarmProvider"></span></span><span id="4gSignal"></span></h2>
-									</header>
-									<div id="weather"></div>
-									<center>
-										<div class="table-wrapper"id ="tbody">
-											<table class="tablesorter">
-												<thead>
-													<tr>
-														<th>Name</th>
-														<th>Problem</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>																
-														<td>Loading....</td>																	
-														<td></td>																																																	
-													</tr>
-												</tbody>
-											</table>
-										</div>
-										<div class="table-wrapper"id ="shane-tbody">
-										</div>
-									</center>
-								</section>
+							
 							<!-- Banner -->
-							<section >
+								<B><I>By using this page you are accepting the fact something may go wrong and damage devices. irisstatus.org or Iris by Lowes is not responsible for damages </I></b>
 								<header class="major">
-										<h2>Favorites</h2>
+										<h2>Hub Tools</h2>
 									</header>
-
-								
-									
-									<div id ="favtbody"></div>
-									<div id="log"></div>
-									<div id="favDevices"></div>
-									
+									<input class="button" type="button" value="Set Hub To Local" onclick="setHubLocal();">
+									<input class="button" type="button" value="Hub Sound Check" onclick="soundCheck();">
+									<br><br>
+									<input class="button" type="button" value="Hub Soft Reboot" onclick="restartHub();">
+									<input class="button" type="button" value="Hub Hard Reboot" onclick="rebootHub();">
+									<br><br>
+									<input class="button" type="button" value="Backup Hub" onclick="backupHub();">
+									<input class="button" type="button" value="Restore Hub" onclick="restoreHub();">
+									<P>
+									<div id="devButtons"></div>
+									<div id="hubStatus"></div>
+								<section id="banner">
 								</section>
-
-								
+								<div id="log"></div>
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Zwave Tools</h2>
+									</header>
+									For reading the Zwave maps you will need Graphviz <a href="http://www.graphviz.org/Download..php">Download here</a> <br>
+									I find settings Layout Engine = twopi and Output file type = png works best <br>
+									To view your protocol IDs <a href="zwavelist.html">Click here</a><p><br>
+									<input class="button" type="button" value="Rebuild Zwave Network" onclick="zwaveRebuild();">
+									<input class="button" type="button" value="Download Zwave Map" onclick="zwaveMap();">
+									<div id="zwaveStatus"></div>
+								</section>
 
 							<!-- Section -->
 								<section>
 									<header class="major">
-										<h2>Cameras</h2>
+										<h2>Portal Settings</h2>
 									</header>
-									<div class="posts" id="cameras">
-										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-											<h3>Loading....</h3>
-											<p>Loading....</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-									</div>
+									Coming soon
 								</section>
+
 						</div>
 					</div>
 
@@ -194,7 +118,7 @@
 										<h2>Menu</h2>
 									</header>
 									<ul>
-																				<li><a href="/">Homepage</a></li>
+										<li><a href="/">Homepage</a></li>
 										<li><a href="history.html">History</a></li>
 										<li><a href="switcheslights.html">Switches & Lights</a></li>
 										<li><a href="controlpanel.html">Control Panel</a></li>
@@ -232,11 +156,11 @@
 										<li><a href="pair.html">Add Device</a></li>
 										<li><a href="faq.html">FAQ</a></li>
 										<li><a href="supporters.html">Supporters</a></li>
+										</li>
 									</ul>
 									<br>
 									<input class="button small" type="button" value="Check for updates on portal" onclick="checkUpdate();">
 									<p>
-									<a href="devbox.html"><i class="fa fa-wrench"></i></a><br>
 									<p>
 									<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 									<input type="hidden" name="cmd" value="_s-xclick">
@@ -251,7 +175,6 @@
 							
 							<!-- Footer -->
 								<footer id="footer">
-								
 									<p class="copyright">&copy; Iris Web Portal. All rights reserved.  Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
 								</footer>
 
@@ -261,10 +184,12 @@
 			</div>
 
 		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
 
 	</body>
+	
 </html>
