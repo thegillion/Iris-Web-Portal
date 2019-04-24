@@ -1,0 +1,62 @@
+function sort(order_arr) {
+    var rows = $('tbody tr').get();
+
+    // pre-compute sort keys
+    $.each(rows, function(idx, row) {
+        // get the ID from a "user-#" string
+		
+        var id = parseInt(row.id.substr(row.id.lastIndexOf('-') + 1, row.length), 10);
+
+        // expando hack
+        row.sortKey = order_arr.indexOf(id);
+    });
+
+    // now sort based on the values set earlier
+    rows.sort(function(a, b) {
+        return a.sortKey - b.sortKey;
+    });
+
+    // replace the table contents with the sorted rows
+    $('tbody').html(rows);
+}
+    //This varible will help us when the jquery.ui.touch.punch.js start its magic
+    var dragFlag = false;
+
+    //starting the sortable ui jquery, no secrets.
+    $(".sortable").sortable({
+        // this delay will help not letting the cards make a move when the user is scroltdng the page.
+        delay: 350,
+        //some basics sets
+        scroll: true,
+        containment: "document",
+        //onces you drop your element we have to set the dragFlag varible to false
+        stop: function (event, ui) {
+            dragFlag = false;
+            // Here we return the card to the original scale
+            $(".sortable td").css({ 'transition': 'all 0s', 'transform': 'scale(1)' });
+			localStorage["orderTempList"] = $('.sortable').sortable('toArray').toString();
+        },
+        //here is just to make sure that when you drop a card, it will return to the original scale and setting the dragFlag to false
+        update: function (event, ui) {
+            dragFlag = false;
+            $(".sortable td").css({ 'transition': 'all 0s', 'transform': 'scale(1)' });
+			localStorage["orderTempList"] = $('.sortable').sortable('toArray').toString();			
+        }
+    });
+
+    // Here I'm using a good jquery plugin called taphold that fires a function after you hold a finger over the element for x mileseconds
+
+    // to enable the drag and drop the user must hold the card over 2 mileseconds, the card will be bigger and the user will be able to drag the card around
+    $(".sortable td").on("taphold", { duration: 200 }, function () {
+        //setting the dragFlag to true
+        dragFlag = true;
+
+        //making the card bigger
+        $(this).css({
+            'transform': 'scale(1.1)'
+        });
+    });
+$(document).ready(function() {
+    var new_order = "[" + localStorage["orderTempList"] + "]";
+    sort(new_order);
+});
