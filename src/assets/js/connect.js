@@ -201,14 +201,14 @@ function testWebSocket() {
 	};
 }
 function onOpen(evt) {
-		document.getElementById("portalCON").innerHTML = '<i class="fa fa-connectdevelop" style="font-size:35px;color:green"></i> <br> Connected <br> Iris shutdown <a href="https://community.irisbylowes.com/t5/News-Announcements/Important-Update-about-Iris-Shutdown/m-p/6454#M590">read here</a>';
+		document.getElementById("portalCON").innerHTML = '<i class="fa fa-connectdevelop" style="font-size:35px;color:green"></i> <br> Connected';
 
 }
 function onClose(evt) {
-		document.getElementById("portalCON").innerHTML = '<i class="fa fa-connectdevelop" style="font-size:35px;color:red"></i> <br> You need to <a href="https://proxy.iriswebportal.com/login.php">Login</a><br> Iris shutdown <a href="https://community.irisbylowes.com/t5/News-Announcements/Important-Update-about-Iris-Shutdown/m-p/6454#M590">read here</a>';
+		document.getElementById("portalCON").innerHTML = '<i class="fa fa-connectdevelop" style="font-size:35px;color:red"></i> <br> You need to <a href="https://proxy.iriswebportal.com/login.php">Login</a>';
 }
 function onError(evt) {
-	document.getElementById("portalCON").innerHTML = '<i class="fa fa-connectdevelop" style="font-size:35px;color:red"></i> <br> You need to <a href="https://proxy.iriswebportal.com/login.php">Login</a><br> Iris shutdown <a href="https://community.irisbylowes.com/t5/News-Announcements/Important-Update-about-Iris-Shutdown/m-p/6454#M590">read here</a>';
+	document.getElementById("portalCON").innerHTML = '<i class="fa fa-connectdevelop" style="font-size:35px;color:red"></i> <br> You need to <a href="https://proxy.iriswebportal.com/login.php">Login</a>';
 }
 function onMessage(evt) {
 console.log("On MEssage connect working data");
