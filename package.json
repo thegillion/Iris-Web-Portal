@@ -4,7 +4,8 @@
   "description": "Iris Web Portal",
   "main": "app.js",
   "dependencies": {
-    "express": "^4.17.0"
+    "express": "^4.17.0",
+    "http-proxy-middleware": "^0.19.1"
   },
   "devDependencies": {},
   "scripts": {
