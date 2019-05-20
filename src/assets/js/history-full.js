@@ -20,7 +20,6 @@ function logFullHistory(History) {
     historyArray.push(headerArray);
     document.getElementById("tbody").innerHTML = "";
     HTMLtable = '<table class="tablesorter"><thead><tr><th> Date and Time</th><th>History</th></tr></thead><tbody>';
-    console.log(hist.length)
     for (var i = 0; i < hist.length; i++) {
         var device = hist[i]
 
@@ -35,7 +34,6 @@ function logFullHistory(History) {
         HTML = HTML + '<tr><td>' + histTimestamp + '</td>'
             + '<td>' + histSubjectName + " " + histLongMessage + '</td></tr>';
         HTMLtable = HTMLtable + HTML;
-        console.log(lineHistory)
         historyArray.push(lineHistory);
         HTML = "";
 
