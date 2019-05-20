@@ -1,4 +1,4 @@
-var DeviceList = [];
+var DeviceList = {};
 
 function OnMhistorylistdevices(evt) {
     if (evt.data.search("6606672e-57f8-47d1-8002-5fe59d34c1d8") != -1) {
@@ -7,29 +7,18 @@ function OnMhistorylistdevices(evt) {
 }
 
 function listHistoryDevices(devices) {
-    Devices = devices.split("},{");
-    var devID = "";
-    var devName = "";
-    for (var i = 0; i < Devices.length; i++) {
-        var device = Devices[i].split(",");
-        for (var x = 0; x < device.length; x++) {
-            if (device[x].search("DRIV:dev") != -1) {
-                devID = device[x].replace('"base:address":"DRIV:dev:', '').replace('"', '');
+    var deviceList = JSON.parse(devices).payload.attributes.devices
 
-            }
-            if (device[x].search("dev:name") != -1) {
-                devName = device[x].replace('"dev:name":"', "").replace(/'\u0027'/g, "").replace('"', '').replace('"', '').replace('"', '');
-
-            }
-            if (device[x].search('"devadv:added":') != -1) {
-                DeviceList.push('<option value="' + devID + '">' + devName + '</option>');
-                devID = "";
-                devName = "";
-            }
-
-        }
+    for (var i = 0; i < deviceList.length; i++) {
+        DeviceList[deviceList[i]["dev:name"]] = deviceList[i]["base:address"].replace('DRIV:dev:', '')
     }
-    document.getElementById("Devices").innerHTML = DeviceList.toString().replace(',', "");
+
+    deviceListHtml = '';
+    for (device in DeviceList) {
+        deviceListHtml += '<option value="' + DeviceList[device] + '">' + device + '</option>'
+    }
+
+    document.getElementById("Devices").innerHTML = deviceListHtml
 }
 
 function callDeviceHistory() {
