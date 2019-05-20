@@ -4,7 +4,7 @@ var placeID;
 var message;
 var homepage = "false";
 var placesA = [];
-var wsUri = "wss://proxy.iriswebportal.com/websocket/"; // Change this URL to your server one.
+var wsUri = "wss://localhost:3000/websocket?v=2018.10.2"; // Change this URL to your server one.
   // var _paq = _paq || [];
   // /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
   // _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);

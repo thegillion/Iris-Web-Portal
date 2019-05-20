@@ -1,0 +1,24 @@
+{
+  "name": "iris-web-portal",
+  "version": "1.3.4",
+  "description": "Iris Web Portal",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.0",
+    "http-proxy-middleware": "^0.19.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wl-net/Iris-Web-Portal.git"
+  },
+  "author": "",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/wl-net/Iris-Web-Portal/issues"
+  },
+  "homepage": "https://github.com/wl-net/Iris-Web-Portal#readme"
+}
