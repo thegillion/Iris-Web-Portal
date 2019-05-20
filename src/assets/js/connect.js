@@ -472,11 +472,6 @@ function remember(index) {
     }
 }
 
-function autoUpdate(boolen) {
-
-
-}
-
 function ListDevices() {
     var e = document.getElementById("places");
     placeID = e.options[e.selectedIndex].value;
