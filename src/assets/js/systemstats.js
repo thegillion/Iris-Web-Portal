@@ -30,7 +30,7 @@ function listsystemstat(devSices){
 
 	document.getElementById("tbody").innerHTML = "";
 	console.log("Reading device list.");	
-	HTMLtable = '<table><thead><tr><th>Name</th><th>Problem</th></tr></thead><tbody><tr><td><br> Iris shutdown <a href="https://community.irisbylowes.com/t5/News-Announcements/Important-Update-about-Iris-Shutdown/m-p/6454#M590">read here</a></td></tr>';
+	HTMLtable = '<table><thead><tr><th>Name</th><th>Problem</th></tr></thead><tbody>';
 	devSices = devSices.split("},{");
 		//writeLogToScreen('<span style="color: blue;">devSices: ' + devSices.replace(/","/g,"<br>").replace(/"},{"/g,"<p>") + '</span>');
 		var devSBatteryNum = "";
@@ -279,7 +279,7 @@ function listsystemstat(devSices){
 							}
 						}
 						var devSInfoLink =  devSID + "'";
-						devSInfoLink = "'device.php?devSid=" + devSInfoLink + '"';
+						devSInfoLink = "'device.html?devSid=" + devSInfoLink + '"';
 						if(devSFav == "true"){
 						// devIDlist.push(devSID);
 						devSFav = '<span id="FAV' + devSID + '">' + '<i onclick="removefromfav(' + devIDlist.length + ')"class="fa fa-heart"></i>' + '</span>';

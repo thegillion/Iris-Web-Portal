@@ -73,7 +73,7 @@ function showNewDevice(devices){
 					}
 					if(device[x].search("devadv:added") != -1){
 					var devInfoLink =  devID + "'";
-						devInfoLink = "'device.php?devid=" + devInfoLink + '"';
+						devInfoLink = "'device.html?devid=" + devInfoLink + '"';
 						if(devFav == "true"){
 						devIDlist.push(devID);
 						devFav = '<span id="FAV' + devID + '">' + '<i onclick="removefromfav(' + devIDlist.length + ')"class="fa fa-heart"></i>' + '</span>';

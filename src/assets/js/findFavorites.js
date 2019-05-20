@@ -195,7 +195,7 @@ function listDevices(devices){
 							}
 						}
 						var devInfoLink =  devID + "'";
-						devInfoLink = "'device.php?devid=" + devInfoLink + '"';
+						devInfoLink = "'device.html?devid=" + devInfoLink + '"';
 						
 					
 					HTMLfav = HTMLfav + '<tr><td>' + devName + '</td>'
