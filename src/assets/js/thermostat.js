@@ -200,7 +200,7 @@ function listthermostat(devices){
 						}
 						var devInfoLink =  devID + "'";
 						var devSettingsLink = "'tstatsettings.php?tStatID=" + devInfoLink + '"';
-						devInfoLink = "'device.php?devid=" + devInfoLink + '"';
+						devInfoLink = "'device.html?devid=" + devInfoLink + '"';
 						
 					HTML = HTML + '<div class="value"  id=' + devID + ' data-site="' + devName + '"><div>' + devName 
 					+ '<br> <div class="tooltip"><i ondblclick="window.location=' + devInfoLink + ' class="fa fa-info-circle" style="color:blue"></i><span class="tooltiptext">' 

@@ -188,7 +188,7 @@ function listCameras(devices){
 						var devInfoLink =  devID + "'";
 						var camInfoLink =  camMac + "'";
 						var camsetInfoLink =  devID + "'";
-						devInfoLink = "'device.php?devid=" + devInfoLink + '"';
+						devInfoLink = "'device.html?devid=" + devInfoLink + '"';
 						camsetInfoLink = "'cameraset.php?camID=" + camsetInfoLink + '"';
 					HTMLcam = HTMLcam + '<div class="value"  id=' + devID + ' data-site="' + devName + '"><div>' + devName 
 					+ '<br> <div class="tooltip"><i ondblclick="window.location=' + devInfoLink + ' class="fa fa-info-circle" style="color:blue"></i><span class="tooltiptext">' 

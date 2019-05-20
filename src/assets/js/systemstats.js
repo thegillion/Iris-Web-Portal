@@ -279,7 +279,7 @@ function listsystemstat(devSices){
 							}
 						}
 						var devSInfoLink =  devSID + "'";
-						devSInfoLink = "'device.php?devSid=" + devSInfoLink + '"';
+						devSInfoLink = "'device.html?devSid=" + devSInfoLink + '"';
 						if(devSFav == "true"){
 						// devIDlist.push(devSID);
 						devSFav = '<span id="FAV' + devSID + '">' + '<i onclick="removefromfav(' + devIDlist.length + ')"class="fa fa-heart"></i>' + '</span>';

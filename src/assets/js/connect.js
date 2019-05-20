@@ -116,7 +116,7 @@ function testWebSocket() {
             onMessage(evt);
             OnMevent(evt);
             homepage = "false"
-        } else if (window.location.href.indexOf("device.php") > -1) {
+        } else if (window.location.href.indexOf("device.html") > -1) {
             onMessage(evt);
             onMdeviceinfo(evt);
             homepage = "false"
@@ -275,7 +275,7 @@ function onMessage(evt) {
                 var e = document.getElementById("places");
                 placeID = e.options[e.selectedIndex].value;
                 placeIDG = e.options[e.selectedIndex].value;
-                if (window.location.href.indexOf("device.php") > -1) {
+                if (window.location.href.indexOf("device.html") > -1) {
                     var message = '{"type":"sess:SetActivePlace","headers":{"destination":"SERV:sess:","correlationId":"78f7d29a-222e-4976-9d2b-d1f553cf8881","isRequest":true},"payload":{"messageType":"sess:SetActivePlace","attributes":{"placeId":"' + placeID + '"}}}';
                     websocket.send(message);
                     var message = '{"type":"place:ListDevices","headers":{"destination":"SERV:place:' + placeID + '","correlationId":"6606672e-57f8-47d1-8002-5fe59d34c1d8","isRequest":true},"payload":{"messageType":"place:ListDevices","attributes":{}}}';

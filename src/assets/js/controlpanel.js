@@ -208,7 +208,7 @@ function listDevices(devices){
 							}
 						}
 						var devInfoLink =  devID + "'";
-						devInfoLink = "'device.php?devid=" + devInfoLink + '"';
+						devInfoLink = "'device.html?devid=" + devInfoLink + '"';
 					if(devCP == "true"){
 						if(cellCount >= 4){
 						HTMLcp = HTMLcp + gridlist[cellCount];
