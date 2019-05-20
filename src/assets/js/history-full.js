@@ -4,6 +4,7 @@ var HTML = "";
 var HTMLtable = "";
 
 function logFullHistory(History) {
+    var hist = JSON.parse(History).payload.attributes.results
     console.log("Got command logfullHistory");
 // History
     var histSubjectName = "";
@@ -19,35 +20,25 @@ function logFullHistory(History) {
     historyArray.push(headerArray);
     document.getElementById("tbody").innerHTML = "";
     HTMLtable = '<table class="tablesorter"><thead><tr><th> Date and Time</th><th>History</th></tr></thead><tbody>';
-    for (var i = 0; i < devices.length; i++) {
-        //writeLogToScreen('<span style="color: blue;">History:</span>');
-        var device = devices[i].split(",");
-        var lineHistory = new Array();
-        for (var x = 0; x < device.length; x++) {
-            if (device[x].search('"timestamp":') != -1) {
-                histTimestamp = device[x].replace('"timestamp":', '').replace('"', "").replace('attributes":{"results":[{', "").replace(':', "").replace('"', "").replace('"', "").replace('"', "");
-                // writeLogToScreen(histTimestamp);
-                var d = moment(parseInt(histTimestamp)).format("MM-DD-YYYY h:mm:ss a");
-                lineHistory.push(d);
-                // writeLogToScreen(d);
-                histTimestamp = d + " ";
-            }
-            if (device[x].search('"subjectName":"') != -1) {
-                histSubjectName = device[x].replace('"subjectName":"', '').replace('"', "").replace('{', "").replace(':', "").replace('"', "").replace('"', "").replace('"', "");
-                //writeLogToScreen(histSubjectName);
-            }
-            if (device[x].search('"longMessage":"') != -1) {
-                histLongMessage = device[x].replace('"longMessage":"', '').replace('"', "").replace('{', "").replace(':', "").replace('"', "").replace('"', "").replace('"', "");
-                lineHistory.push(histSubjectName + " " + histLongMessage);
-                //writeLogToScreen("histID " + histDivID + histLongMessage);
-                HTML = HTML + '<tr><td>' + histTimestamp + '</td>'
-                    + '<td>' + histSubjectName + " " + histLongMessage + '</td></tr>';
-                HTMLtable = HTMLtable + HTML;
-                historyArray.push(lineHistory);
-                HTML = "";
-            }
+    console.log(hist.length)
+    for (var i = 0; i < hist.length; i++) {
+        var device = hist[i]
 
-        }
+        var lineHistory = new Array();
+        var d = moment(parseInt(device.timestamp)).format("MM-DD-YYYY h:mm:ss a");
+        lineHistory.push(d);
+        histTimestamp = d + " ";
+        histSubjectName = device.subjectName
+        histLongMessage = device.longMessage
+        lineHistory.push(histSubjectName + " " + histLongMessage);
+
+        HTML = HTML + '<tr><td>' + histTimestamp + '</td>'
+            + '<td>' + histSubjectName + " " + histLongMessage + '</td></tr>';
+        HTMLtable = HTMLtable + HTML;
+        console.log(lineHistory)
+        historyArray.push(lineHistory);
+        HTML = "";
+
     }
     document.getElementById("tbody").innerHTML = HTMLtable + "</tr></tbody></table>";
     // $( document ).ready(function() {
