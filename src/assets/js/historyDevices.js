@@ -7,7 +7,6 @@ function OnMhistorylistdevices(evt) {
 }
 
 function listHistoryDevices(devices) {
-    // document.getElementById("cameras").innerHTML = "";
     Devices = devices.split("},{");
     var devID = "";
     var devName = "";
